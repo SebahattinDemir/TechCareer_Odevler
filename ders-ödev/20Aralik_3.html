@@ -19,6 +19,53 @@
 
 </body>
 <script>
-    // Bu kısımda zorlandım tekrar bakacağım!!!!!
+     function alertMultiply() {
+        performOperation('X', 'çarpma');
+      }
+
+      function alertDivision() {
+        performOperation('/', 'bölme');
+      }
+
+      function alertSubtraction() {
+        performOperation('-', 'çıkarma');
+      }
+
+      function alertTotal() {
+        performOperation('+', 'toplama');
+      }
+
+      function performOperation(operator, operationName) {
+        let inputValueOne = document.getElementById('inputValueOne').value;
+        let inputValueTwo = document.getElementById('inputValueTwo').value;
+
+        if (isNaN(inputValueOne) || isNaN(inputValueTwo)) {
+          alert('Geçersiz değer! Lütfen iki sayı girin.');
+          return;
+        }
+
+        let result;
+        switch (operator) {
+          case 'X':
+            result = parseFloat(inputValueOne) * parseFloat(inputValueTwo);
+            break;
+          case '/':
+            result = parseFloat(inputValueOne) / parseFloat(inputValueTwo);
+            break;
+          case '-':
+            result = parseFloat(inputValueOne) - parseFloat(inputValueTwo);
+            break;
+          case '+':
+            result = parseFloat(inputValueOne) + parseFloat(inputValueTwo);
+            break;
+          default:
+            alert('Geçersiz işlem!');
+            return;
+        }
+
+        alert(`${operationName} Sonuç: ${result.toFixed(5)}`);
+        document.getElementById('inputValueOne').value = '';
+        document.getElementById('inputValueTwo').value = '';
+      }
 </script>
 </html>
